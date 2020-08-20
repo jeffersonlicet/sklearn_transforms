@@ -52,5 +52,5 @@ class KerasBuilder():
                       metrics=['accuracy'])
         return model
 
-    def KerasClassificator(epochs=120, batch_size=32, verbose=1) : 
+    def KerasClassificator(self, epochs=120, batch_size=32, verbose=1) : 
         return KerasClassifier(build_fn=self.createKerasModel, epochs=epochs,  batch_size=batch_size, verbose=verbose)
