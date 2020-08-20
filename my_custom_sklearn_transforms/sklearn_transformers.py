@@ -48,24 +48,25 @@ def make_keras_picklable():
 # Run the function
 make_keras_picklable()
 
-def createKerasModel():
-    model = Sequential()
-    model.add(Dense(100,
-                    input_dim=12,
-                    kernel_initializer=glorot_uniform(seed=4444),  
-                    activation='relu'))
-    model.add(Dropout(0.2))
-    model.add(Dense(100, 
-                    kernel_initializer=glorot_uniform(seed=4444), 
-                    activation='relu'))
-    model.add(Dropout(0.2))
-    model.add(Dense(6, 
-                    kernel_initializer=glorot_uniform(seed=4444), 
-                    activation='softmax'))
-    model.compile(loss='sparse_categorical_crossentropy', 
-                  optimizer='adam', 
-                  metrics=['accuracy'])
-    return model
+class KerasBuilder():
+    def createKerasModel():
+        model = Sequential()
+        model.add(Dense(100,
+                        input_dim=12,
+                        kernel_initializer=glorot_uniform(seed=4444),  
+                        activation='relu'))
+        model.add(Dropout(0.2))
+        model.add(Dense(100, 
+                        kernel_initializer=glorot_uniform(seed=4444), 
+                        activation='relu'))
+        model.add(Dropout(0.2))
+        model.add(Dense(6, 
+                        kernel_initializer=glorot_uniform(seed=4444), 
+                        activation='softmax'))
+        model.compile(loss='sparse_categorical_crossentropy', 
+                      optimizer='adam', 
+                      metrics=['accuracy'])
+        return model
 
-def KerasClassificator(epochs=120, batch_size=32, verbose=1) : 
-    return KerasClassifier(build_fn=createKerasModel, epochs=epochs,  batch_size=batch_size, verbose=verbose)
+    def KerasClassificator(epochs=120, batch_size=32, verbose=1) : 
+        return KerasClassifier(build_fn=self.createKerasModel, epochs=epochs,  batch_size=batch_size, verbose=verbose)
