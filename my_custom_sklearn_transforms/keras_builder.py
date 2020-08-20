@@ -1,6 +1,7 @@
 from tensorflow.keras.models import Sequential, Model
 from tensorflow.keras.layers import Dense, Dropout
 from tensorflow.keras.initializers import glorot_uniform
+from tensorflow.keras.wrappers.scikit_learn import KerasClassifier
 
 from tensorflow.keras.layers import deserialize, serialize
 from tensorflow.python.keras.saving import saving_utils
